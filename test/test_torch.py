@@ -127,12 +127,9 @@ class TestBasicVitalSigns(TestCase):
 class TestVitalSignsCuda(TestCase):
     @onlyOn(["cuda", "xpu"])
     def test_cuda_vitals_gpu_only(self, device):
-        if TEST_XPU:
-            with torch_vital_set("ON"):
-                self.assertIn("XPU.used\t\t true", torch.read_vitals())
-        else:
-            with torch_vital_set("ON"):
-                self.assertIn("CUDA.used\t\t true", torch.read_vitals())
+        device_type = torch.device(device).type.upper()
+        with torch_vital_set("ON"):
+            self.assertIn(device_type+".used\t\t true", torch.read_vitals())
 
 
 is_cuda_sm86 = torch.cuda.is_available() and torch.cuda.get_device_capability(0) == (8, 6)
