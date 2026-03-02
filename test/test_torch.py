@@ -44,7 +44,7 @@ from torch.testing._internal.common_utils import (  # type: ignore[attr-defined]
     wrapDeterministicFlagAPITest, DeterministicGuard, CudaSyncGuard,
     bytes_to_scalar, parametrize, skipIfMPS, noncontiguous_like,
     AlwaysWarnTypedStorageRemoval, TEST_WITH_TORCHDYNAMO, xfailIfTorchDynamo,
-    xfailIfS390X, set_warn_always_context, decorateIf, isRocmArchAnyOf, TEST_XPU)
+    xfailIfS390X, set_warn_always_context, decorateIf, isRocmArchAnyOf)
 from multiprocessing.reduction import ForkingPickler
 from torch.testing._internal.common_device_type import (
     expectedFailureMeta,
